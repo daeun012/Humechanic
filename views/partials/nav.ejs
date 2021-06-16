@@ -1,0 +1,44 @@
+<nav class="custom-nav navbar navbar-expand-lg navbar-dark">
+  <div class="container-lg">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="padding: 5px">
+        <img alt="" src="/image/small_logo.jpg" style="width: 40px" /><span style="vertical-align: middle; line-height: 40px; padding-left: 8px; font-size: 25px">Humechanic</span>
+      </a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/project">Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/notice">Notice</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/board">Q & A </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <% if(isAuthenticated){ %>
+        <li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
+        <% } else { %>
+        <li class="nav-item"><a href="/register" class="nav-link">Sign Up</a></li>
+        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

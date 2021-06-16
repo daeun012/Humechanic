@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container-lg">
+      <div class="custom-head">
+        <h1>Notice <small>공지사항</small></h1>
+      </div>
+
+      <div class="custom-view">
+        <div class="row p-3">
+          <div class="col-sm-1">제목</div>
+          <div class="col-sm-8"><%= list.title %></div>
+        </div>
+        <div class="row p-3">
+          <div class="col-sm-1">작성자</div>
+          <div class="col-sm-8"><%= list.author?list.author.username:"" %></div>
+        </div>
+        <div class="row p-3">
+          <div class="col-sm-1">날짜</div>
+          <div class="col-sm-8">
+            <div><span>Created</span> : <span data-date-time="<%= list.createdAt %>"></span></div>
+            <% if(list.updatedAt) { %>
+            <div><span>Updated</span> : <span data-date-time="<%= list.updatedAt %>"></span></div>
+            <% } %>
+          </div>
+        </div>
+        <div class="row p-3" style="border-style: none">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-9"><%= list.desc %></div>
+        </div>
+      </div>
+
+      <div class="custom-control">
+        <% if(isAuthenticated && list.author && currentUser.id == list.author.id){ %>
+        <a class="btn btn-dark" href="/notice">목록</a>
+        <a class="btn btn-dark" href="/notice/<%= list._id %>/edit">수정</a>
+        <form action="/notice/delete/<%= list._id %>?_method=delete" method="post" class="d-inline">
+          <a class="btn btn-dark" href="javascript:void(0)" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">삭제</a>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

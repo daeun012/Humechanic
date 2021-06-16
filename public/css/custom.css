@@ -1,0 +1,99 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.custom-nav {
+  background-color: black !important;
+}
+
+.logo {
+  font-weight: 100;
+  font-size: 80px;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+}
+
+a.logo {
+  color: #5b5b5b;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
+}
+
+.custom-head h1 {
+  padding-bottom: 0.45rem;
+  margin: 2rem 0 1rem;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  line-height: 1.1;
+  font-weight: 700;
+}
+.custom-head h2 {
+  font-weight: 700;
+}
+.custom-head small {
+  font-size: 70%;
+  font-weight: 500;
+  line-height: 1;
+  color: #777;
+}
+
+.custom-description .content h2 {
+  font-size: 1.5rem;
+
+  color: #333;
+  margin: 1rem 0 0.5rem;
+}
+
+.custom-description .content {
+  flex-grow: 2;
+}
+
+.custom-table th,
+td:not(.title) {
+  text-align: center;
+}
+
+.custom-view .row {
+  border-bottom: 1px solid #eee;
+}
+.custom-view .col-sm-1 {
+  font-weight: bold;
+}
+
+.custom-control {
+  padding: 20px;
+  text-align: right;
+}
+
+.register .card-header {
+  font-size: 20px;
+}
+
+.login .card-header {
+  font-size: 20px;
+}
+
+.login .d-grid {
+  border-bottom: #eee;
+}
+.comment-edit,
+.comment-edit-enabled .comment-show {
+  display: none;
+}
+
+.comment-edit-enabled .comment-edit {
+  display: inherit;
+}

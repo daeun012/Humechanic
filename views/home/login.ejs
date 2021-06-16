@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <div class="container-lg mt-5 login">
+      <div class="text-center"><a class="logo" href="/">Humechanic</a></div>
+
+      <div class="card m-auto shadow-sm" style="width: 30rem">
+        <div class="card-header bg-dark text-center py-3" style="color: white">LOGIN</div>
+
+        <div class="card-body">
+          <form action="/user/login" method="post">
+            <div class="row">
+              <div class="col">
+                <label for="inputEmail4" class="form-label">Username</label>
+                <input type="text" id="username" name="username" value="<%= username %>" class="form-control <%= (errors.username)?'is-invalid':'' %>" />
+                <% if(errors.username){ %>
+                <span class="invalid-feedback"><%= errors.username %></span>
+                <% } %>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input type="password" id="password" name="password" value="" class="form-control <%= (errors.password)?'is-invalid':'' %>" />
+                <% if(errors.password){ %>
+                <span class="invalid-feedback"><%= errors.password %></span>
+                <% } %>
+              </div>
+            </div>
+
+            <% if(errors.login){ %>
+            <div class="invalid-feedback d-block"><%= errors.login %></div>
+            <% } %>
+
+            <div class="custom d-grid mt-4">
+              <button type="submit" class="custom-btn btn btn-dark shadow-sm">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer py-3 bg-transparent">
+          <div class="text-end">
+            New Here?
+            <a href="/register" style="font-weight: bold; color: black">Create an account </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

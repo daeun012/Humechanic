@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container-lg">
+      <div class="custom-head">
+        <h1>Notice <small>공지사항</small></h1>
+      </div>
+      <table class="table table-hover custom-table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">날짜</th>
+            <th scope="col">조회수</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(lists == null || lists.length == 0){ %>
+          <tr>
+            <td colspan="5">There is no data to show :(</td>
+          </tr>
+          <% } %> <% lists.forEach(function(list,index) { %>
+          <tr>
+            <th><%= list.numId %></th>
+            <td class="title">
+              <a href="/notice/<%= list._id %>"><%= list.title %></a>
+            </td>
+            <td><%= list.author?list.author.username:"" %></td>
+            <td>
+              <span data-date="<%= list.createdAt %>"></span>
+            </td>
+            <td><%= list.views %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <div class="custom-control">
+        <% if(isAuthenticated){ %>
+        <a href="/notice/write" class="btn btn-dark">글쓰기</a>
+        <% } %>
+      </div>
+
+      <div>
+        <nav aria-label="Page navigation  ">
+          <% let offset = 2; var previousBtnEnabled = currentPage>1; var nextBtnEnabled = currentPage < maxPage; %>
+          <ul class="pagination justify-content-center">
+            <li class="page-item <%= previousBtnEnabled?'':'disabled' %>">
+              <a class="page-link" href="/notice?page=<%= currentPage-1 %>&limit=<%= limit %>" <%= previousBtnEnabled?'':'tabindex=-1' %>>«</a>
+            </li>
+            <% for(i=1;i<=maxPage;i++){ %>
+              <% if(i==1 || i==maxPage || (i>=currentPage-offset && i<=currentPage+offset)){ %>
+                <li class="page-item <%= currentPage==i?'active':'' %>"><a class="page-link bg-dark border-dark" href="/notice?page=<%= i %>&limit=<%= limit %>"> <%= i %> </a></li>
+              <% } else if(i==2 || i==maxPage-1){ %>
+                <li><a class="page-link">...</a></li>
+              <% } %>
+            <% } %>
+            <li class="page-item <%= nextBtnEnabled?'':'disabled' %>">
+              <a class="page-link" href="/notice?page=<%= currentPage+1 %>&limit=<%= limit %>" <%= nextBtnEnabled?'':'tabindex=-1' %>>»</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

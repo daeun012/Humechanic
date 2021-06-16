@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container-lg">
+      <div class="custom-head">
+        <h1>Notice <small>공지사항</small></h1>
+      </div>
+
+      <form action="/notice/create" method="post">
+        <div class="row mb-3">
+          <label for="title" class="col-sm-1 col-form-label">제목</label>
+          <div class="col-sm-8">
+            <input type="text" id="title" name="title" value="<%= list.title %>" class="form-control <%= (errors.title)?'is-invalid':'' %>" />
+            <% if(errors.title){ %>
+            <span class="invalid-feedback"><%= errors.title.message %></span>
+            <% } %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-9">
+            <textarea id="desc" name="desc" rows="5" class="form-control <%= (errors.desc)?'is-invalid':'' %>"><%= list.desc %></textarea>
+            <% if(errors.desc){ %>
+            <span class="invalid-feedback"><%= errors.desc.message %></span>
+            <% } %>
+          </div>
+        </div>
+        <% if(errors.unhandled){ %>
+        <div class="invalid-feedback d-block"><%= errors.unhandled %></div>
+        <% } %>
+        <div class="custom-control">
+          <a class="btn btn-dark" href="/notice">취소</a>
+          <button type="submit" class="btn btn-dark">등록</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
