@@ -32,8 +32,7 @@ nodemon
 
 ### Login & Register
 
-<img src="./rimages/login.jpg" width="450px" height="500px" title="Login" alt="Login"></img>
-<img src="./rimages/register.jpg" width="450px"  height="500px" title="Register" alt="Register"></img>
+<img src="./rimages/auth.jpg" title="Auth" alt="Auth"></img>
 
 ### About
 
